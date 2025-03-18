@@ -12,6 +12,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //Another way to do it "android:id="@+id/fragmentContainerView" from activity_main layout if that does not exist (WARNING: memory leak)
+        //supportFragmentManager.beginTransaction().add(R.id.fragmentContainerView, DieFragment()).commit()
+
         findViewById<Button>(R.id.rollDiceButton).setOnClickListener{
             (supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as DieFragment).throwDie()
         }
