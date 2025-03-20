@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
-import kotlin.random.Random
 
 class DieFragment : Fragment() {
 
@@ -29,7 +28,7 @@ class DieFragment : Fragment() {
             it.getInt(DIESIDE).run {
                 dieSides = this
             }
-            dieViewModeling = ViewModelProvider(this)[DieViewModel::class.java]
+            dieViewModeling = ViewModelProvider(requireActivity())[DieViewModel::class.java]
         }
     }
 
@@ -56,11 +55,7 @@ class DieFragment : Fragment() {
         }
 
         if (savedInstanceState == null) {
-            throwDie()
+            dieViewModeling.rollDie()
         }
-    }
-
-    fun throwDie() {
-        dieViewModeling.setCurrentRoll(Random.nextInt(dieSides) + 1)
     }
 }
